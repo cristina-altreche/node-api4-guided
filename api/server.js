@@ -1,12 +1,16 @@
-const express = require('express');
-const helmet = require('helmet');
+const express = require("express");
+const helmet = require("helmet");
 
-const apiRouter = require('./api-router.js');
+const apiRouter = require("./api-router.js");
 
 const server = express();
 
 server.use(helmet());
 
-server.use('/api', apiRouter);
+server.use("/api", apiRouter);
+
+server.get("/", (req, res) => {
+  res.send(200).json("This is good!");
+});
 
 module.exports = server;
