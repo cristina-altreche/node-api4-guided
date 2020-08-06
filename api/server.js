@@ -10,7 +10,8 @@ server.use(helmet());
 server.use("/api", apiRouter);
 
 server.get("/", (req, res) => {
-  res.send(200).json("This is good!");
+    const message= process.env.MESSAGE || "hello from code"
+  res.status(200).json({message, database: process.env.DB_NAME});
 });
 
 module.exports = server;
